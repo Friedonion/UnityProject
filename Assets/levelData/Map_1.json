@@ -1,0 +1,9 @@
+{
+  "len": 3,
+    "map": [
+      { "time":3, "number":0, "point":1 },
+      { "time":3, "number":0, "point":1 },
+      { "time":5, "number":1, "point":0 }
+    ]
+ 
+}

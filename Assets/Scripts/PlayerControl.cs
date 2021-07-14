@@ -13,6 +13,11 @@ public class PlayerControl : MonoBehaviour
             if (jump > 0)
             {
                 GetComponent<Rigidbody2D>().velocity = new Vector2(0, jumpSpeed);  //Rigidbody2D 컴포넌트를 가져와 y축방향의 속력을 지정
+                if (jump == 2)
+                    GetComponent<Animator>().SetInteger("State",1);
+                else
+                GetComponent<Animator>().SetInteger("State", 2);
+
                 jump--;
             }
         }  
@@ -22,6 +27,10 @@ public class PlayerControl : MonoBehaviour
         Debug.Log(other.gameObject.name); // Unity 콘솔에 충돌한 물체 이름 출력, 제대로 실행되고 있는지 확인하는 용도
         if (other.gameObject.tag == "Plane") 
         {
+            if (jump == 1)
+                GetComponent<Animator>().SetInteger("State", 3);
+            else if (jump == 0)
+            GetComponent<Animator>().SetInteger("State", 4);
             jump = 2; //Plane 태그를 가진 오브젝트와 충돌하면 jump횟수 초기화
         }
     }
