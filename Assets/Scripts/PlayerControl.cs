@@ -22,9 +22,16 @@ public class PlayerControl : MonoBehaviour
             }
         }  
     }
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "EndOfGame")
+        {
+            GameObject.Find("GameManager").GetComponent<GameManager>().clear();
+        }
+    }
     void OnCollisionEnter2D(Collision2D other) //다른2D collider와 충돌하면 한 번 실행, 충돌한 collider를 other이라는 매개변수로 받음 
     {
-        Debug.Log(other.gameObject.name); // Unity 콘솔에 충돌한 물체 이름 출력, 제대로 실행되고 있는지 확인하는 용도
+        Debug.Log(other.gameObject.name); // Unity 콘솔에 충돌한 물체 이름 출력, 제대로 실행되고 있는지 확인하는 용도 
         if (other.gameObject.tag == "Plane") 
         {
             if (jump == 1)
@@ -34,4 +41,7 @@ public class PlayerControl : MonoBehaviour
             jump = 2; //Plane 태그를 가진 오브젝트와 충돌하면 jump횟수 초기화
         }
     }
+  
+
 }
+
